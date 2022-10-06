@@ -1,0 +1,27 @@
+a,
+#nav .nav-list a:hover,
+#nav .nav-list a.active,
+.main-banner .icons a:hover,
+.main-color {
+  color: #00d2c4;
+}
+
+.main-slider .slick-dots li:hover button,
+.main-slider .slick-dots li.slick-active button,
+.screen-shold .slick-dots li.slick-active button,
+.main-bg-color {
+  background-color: #00d2c4;
+}
+
+.contact-section .form-control:focus,
+.main-border-color {
+  border-color: #00d2c4;
+}
+
+.price-box .feature {
+  border-color: #00d2c4 transparent transparent transparent;
+}
+
+.price-box .feature.add {
+  border-color: transparent #00d2c4 transparent transparent;
+}

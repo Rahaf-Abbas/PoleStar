@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- set the encoding of your site -->
+	<meta charset="utf-8">
+	<!-- set the viewport width and initial-scale on mobile devices -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- set the apple mobile web app capable -->
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<!-- set the HandheldFriendly -->
+	<meta name="HandheldFriendly" content="True">
+	<!-- set the apple mobile web app status bar style -->
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<!-- set the description -->
+	<meta name="description" content="PoleStar">
+	<meta name="keywords" content="PoleStar , AI , Guider , Books , Courses ">
+	<meta name="author" content="PoleStar">
+	<!-- Page Title -->
+	<title>PoleStar</title>
+	<!-- include the site stylesheet -->
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600%7cRaleway:400,600,700" rel="stylesheet">
+	<!-- include the site stylesheet -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}">          
+	<!-- include the site stylesheet -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/plugin-resets.css') }}">          
+	<!-- include the site stylesheet -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">          
+	<!-- include the site stylesheet -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/responsive.css') }}">          
+	<!-- include the site stylesheet -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/color.css') }}">          
+</head> 
+<body>
+	<div id="wrapper">
+		<div class="loader-container" id="loader">
+			<div class="holder">
+				<div class="spinner">
+			        <div class="double-bounce1 main-bg-color"></div>
+			        <div class="double-bounce2 main-bg-color"></div>
+			      </div>
+			</div>
+		</div>
+		<!-- header of the page start here -->
+		<header id="header" class="nospace">
+			<div class="holder">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12 text-center">
+							<!-- mobile logo -->
+							<div class="logo main-bg-color text-uppercase pull-left visible-xs"><a href="#">M</a></div>
+							<a href="#" class="nav-opener pull-right visible-xs"><i class="fa fa-bars" aria-hidden="true"></i></a>
+							<!-- page navigation start here -->
+							<nav id="nav">
+								<ul class="nav-list list-inline text-center">
+									<li><a href="#" data-scroll-nav="0" class="smooth">Home</a></li>
+									<li><a href="#" data-scroll-nav="2" class="smooth">Our Services</a></li>
+									<li><a href="#" data-scroll-nav="2" class="smooth">How it Work</a></li>
+								</ul>
+								<ul class="nav-list list-inline text-center">
+									<li><a href="#" data-scroll-nav="4" class="smooth">Books & Courses</a></li>
+									<li><a href="#" data-scroll-nav="5" class="smooth">Statistics</a></li>
+									<li><a href="#" data-scroll-nav="6" class="smooth">Contact Us</a></li>
+								</ul>
+								<!-- desktop logo -->
+								<div class="logo text-uppercase hidden-xs"><img src="https://k.top4top.io/p_2452wxisx1.png" width="100" hieght="125"></div>							</nav>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- page navigation end here -->
+		</header>
+		<!-- header of the page end here -->
+		<!-- main content wrapping section start here -->
+		<main id="main">
+            {% block content %} {% endblock %} 
+		</main>
+		<!-- main content wrapping section end here -->
+
+		<!-- footer of the page start here -->
+		<footer id="footer" class="dark-bg pad-top-xs pad-bottom-xs">
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12 col-sm-6">
+						<p>2022 © Pole Star. All rights reserved.</p>
+					</div>
+					<div class="col-xs-12 col-sm-6">
+						<ul class="list-inline text-right mt-social">
+							<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+							<li><a href="#"><i class="fa fa-behance"></i></a></li>
+							<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</footer>
+		<!-- footer of the page end here -->
+		<!-- Back Top of the page -->
+	    <span id="back-top" class="fa fa-angle-up main-bg-color"></span>
+	</div>
+
+
+	<script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/plugins.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/jquery.main.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/particles.js') }}"></script>	
+
+	</body>
+</html>
