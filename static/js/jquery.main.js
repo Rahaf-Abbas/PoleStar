@@ -1,6 +1,16 @@
 $(document).ready(function () {
   "use strict";
 
+  var path = window.location.pathname;
+  if (path != "/") {
+    $(document).ready(function () {
+      var wH = $(window).height(),
+        smH = $("#header").innerHeight(),
+        fH = $("footer").innerHeight();
+      $("#main").css("min-height", wH - (smH - 100));
+    });
+  }
+
   jQuery("#contactForm")
     .validator()
     .on("submit", function (event) {
@@ -114,6 +124,7 @@ $(document).ready(function () {
   }
 
   initStickyHeader();
+
   function initStickyHeader() {
     "use strict";
 
@@ -132,6 +143,8 @@ $(document).ready(function () {
             header.addClass(stickyClass);
           }
         } else {
+          var path = window.location.pathname;
+          // && path == "/"
           if (!flag) {
             flag = true;
             header.removeClass(stickyClass);
