@@ -52,6 +52,14 @@
 							<!-- page navigation start here -->
 							<nav id="nav">
 								<ul class="nav-list list-inline text-center">
+									{% if session['loggedin'] %}
+									<li><a data-scroll-nav="0" class="smooth"><i class="fa fa-user" aria-hidden="true"></i> {{session.username}}</a></li>
+								  	{% else %}
+									<li><a href="login" class="smooth"><i class="fa fa-sign-in" aria-hidden="true"></i> Login </a></li>
+
+								  	{% endif %}
+								
+								
 									<li><a href="#" data-scroll-nav="0" class="smooth">Home</a></li>
 									<li><a href="#" data-scroll-nav="2" class="smooth">Our Services</a></li>
 									<li><a href="#" data-scroll-nav="2" class="smooth">How it Work</a></li>
@@ -59,7 +67,11 @@
 								<ul class="nav-list list-inline text-center">
 									<li><a href="#" data-scroll-nav="4" class="smooth">Books & Courses</a></li>
 									<li><a href="#" data-scroll-nav="5" class="smooth">Statistics</a></li>
-									<li><a href="#" data-scroll-nav="6" class="smooth">Contact Us</a></li>
+									
+									{% if session['loggedin'] %}
+									<li><a href="logout" class="smooth"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a></li>
+								  	{% endif %}
+
 								</ul>
 								<!-- desktop logo -->
 								<div class="logo text-uppercase hidden-xs"><img src="https://k.top4top.io/p_2452wxisx1.png" width="100" hieght="125"></div>							</nav>

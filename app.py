@@ -24,7 +24,9 @@ mysql = MySQL(app)
 app.add_url_rule('/', view_func=home.index , methods=['GET'])
 app.add_url_rule('/login', view_func=home.login , methods=['GET', 'POST'])
 app.add_url_rule('/register', view_func=home.register , methods=['GET', 'POST'])
-@app.route('/pythonlogin/logout')
+
+    
+@app.route('/logout')
 def logout():
     # Remove session data, this will log the user out
    session.pop('loggedin', None)
