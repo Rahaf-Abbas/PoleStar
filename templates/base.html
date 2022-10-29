@@ -20,15 +20,18 @@
 	<!-- include the site stylesheet -->
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600%7cRaleway:400,600,700" rel="stylesheet">
 	<!-- include the site stylesheet -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}">          
-	<!-- include the site stylesheet -->
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+		<!-- include the site stylesheet -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/plugin-resets.css') }}">          
 	<!-- include the site stylesheet -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">          
 	<!-- include the site stylesheet -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/responsive.css') }}">          
 	<!-- include the site stylesheet -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/color.css') }}">          
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/color.css') }}">      
+	
+	{% block extraCSS %} {% endblock %} 
+
 </head> 
 <body>
 	<div id="wrapper">
@@ -114,8 +117,13 @@
 	<script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
 	<script src="{{ url_for('static', filename='js/plugins.js') }}"></script>
 	<script src="{{ url_for('static', filename='js/jquery.main.js') }}"></script>
+
+	<!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	
 	<script src="{{ url_for('static', filename='js/particles.js') }}"></script>	
 	<script src="{{ url_for('static', filename='js/script.js') }}"></script>	
+
 
 	{% block scripts %} {% endblock %} 
 

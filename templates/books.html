@@ -1,0 +1,188 @@
+{% extends 'base.html' %}
+{% block extraCSS %}
+    <link href="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-star-rating@4.1.2/css/star-rating.min.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-star-rating@4.1.2/themes/krajee-svg/theme.css" media="all" rel="stylesheet" type="text/css" />
+
+{% endblock %}
+
+{% block content %}
+<div class="main-banner bg-img-full section text-center" style="background-color: white;" data-scroll-index="0">
+	<div class="pad-top-md hidden-xs"></div>
+	<div class="pad-bottom-lg"></div>
+	<div class="container">
+		<header class="main-heading row">
+			<div class="col-xs-12 col-sm-10 col-sm-push-1 col-lg-8 col-lg-push-2 text-center mar-bottom-md">
+				<span class="subheading text-uppercase main-color">Read Now !</span>
+				<h2 class="heading" style="color: black;">Books Gallary</h2>
+				<h4>If you don't like to read, you haven't found the right book</h4>
+			</div>
+		</header><!-- main heading end here -->
+        
+		<div class="row" style="color:black">
+
+                    <div class="py-5">
+                      <div class="container pd-0">
+                        <div class="row">
+                            <div id="books">
+                       <div style="display: block; margin: 0 auto; width:300px;">
+                       <input class="search form-control my-3" placeholder="Search" />
+                       </div>
+                       <ul class="list">
+                        {% for book in books %}
+                          <div class="col-md-4 mt-2 mb-3">
+                            <div class="card border border-danger">
+                                <img class="card-img-top" width="300" height="200" src="{{ url_for('static', filename='images/book.png') }}" alt="Card image cap">
+                              <div class="card-block">
+                                
+                                <h4 class="Book-title card-title font-weight-bold" style="color: black;" >{{book['book_name']}}</h4>
+                                <h6 class="Book-concept card-subtitle text-muted font-weight-bold">{{book['concept']}}</h6>
+                                <form method="get" action="books.html">
+                                <input class="bookRate" name="bookRate" id="input-id" type="number" max="5">
+
+                                 <br><br>
+                                <p class="Book-details card-text p-y-1" style="color: black;">{{book['short_description']}}</p>
+                                
+                                <button type="submit" class="btn btn-sm btn-info">Rate</button>
+                                <button type="button"  class="btn btn-primary" onclick="openModel('book-{{book['book_id']}}')">More details</button>
+                            </form>
+ 
+                            </div>
+                            </div>
+                          </div>
+
+                          {% endfor %}
+                        </ul>
+                        </div>
+                        </div>
+                      </div>
+                    </div>
+                    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+                    <script src="https://pingendo.com/assets/bootstrap/bootstrap-4.0.0-alpha.6.min.js"></script>
+
+		</div>
+	</div>
+	<div class="pad-top-sm hidden-xs"></div>
+</div><!-- end of main-banner -->
+<!-- Button trigger modal -->
+  
+
+
+{% for book in books %}
+
+<div class="modal fade" id="book-{{book['book_id']}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">{{book['book_name']}}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            {{book['short_description']}}
+
+            <br>
+            <ul>
+                <li>Author: {{book['author']}}</li>
+                <li>Pages:  {{book['page']}}</li>
+                <li>Programming language:  {{book['programming_language']}}</li>
+                <li>Tool: {{book['tool']}}</li>
+            </ul>
+            
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+
+
+  <!-- <div class="modal" id="largeShoes" tabindex="-1" role="dialog" aria-labelledby="modalLabelLarge" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+    <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+    </button>
+    <h4 class="modal-title" id="modalLabelLarge">Modal Title</h4>
+    </div>
+    <div class="modal-body">
+    Modal content...
+    </div>
+    </div>
+    </div>
+    </div> -->
+
+{% endblock %}
+
+{% block scripts %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-star-rating@4.1.2/js/star-rating.min.js" type="text/javascript"></script>
+<script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-star-rating@4.1.2/themes/krajee-svg/theme.js"></script>
+
+<script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-star-rating@4.1.2/js/locales/LANG.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+<script src="https://cdn.rawgit.com/alertifyjs/alertify.js/v1.0.10/dist/js/alertify.js"></script>
+
+
+<script>
+$(".bookRate").rating({'size':'lg','minThreshold':1});
+
+function openModel(id){
+    $("#"+id).modal('show');
+    }
+</script>
+
+<script>
+
+function login(){
+
+var email=document.getElementById("email").value;
+var password=document.getElementById("password").value;
+if(email == null || email == "" || password == "" || password == null){
+
+	swal.fire({
+			title: 'Sorry',
+			text: "Please Fill in the required fields",
+			icon: 'info',
+		});
+	throw new Error("Empty Inputs");
+
+}
+	sendData("{{ url_for('login') }}", "email="+email+"&password="+password)
+	.then(function(response){
+		console.log(response[0]);
+		swal.fire({
+			title: response[0].t,
+			text: response[0].m,
+			icon: response[0].tp,
+		});
+
+		if(response[0].tp == 'error'){
+			console.log("error");
+
+		} else if (response[0].tp == 'success'){
+			window.location.replace("/");
+
+		}
+	});
+
+}
+
+
+var options = {
+    valueNames: [ 'Book-title', 'Book-details','Boconcept' ]
+    };
+
+    var bookList = new List('books', options);
+
+</script>
+{% endblock %}
+
+

@@ -1,8 +1,29 @@
-from flask import render_template
+from flask import Flask, render_template, request , jsonify , session , url_for , redirect
 import pandas as pd
 import numpy as np
 
+from flask_mysqldb import MySQL
+import MySQLdb.cursors
+import re
 
+
+app = Flask(__name__)
+
+app.secret_key = '6e63626d17f55cc6b73d019d'
+ 
+app.config['MYSQL_HOST'] = 'localhost'
+app.config['MYSQL_USER'] = 'root'
+app.config['MYSQL_PASSWORD'] = ''
+app.config['MYSQL_DB'] = 'polestar'
+ 
+mysql = MySQL(app)
+
+def books():
+    cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+    cursor.execute('SELECT * FROM books')
+    books = cursor.fetchall()
+
+    return render_template('books.html', books = books)
 
 def test():
     ratings = pd.read_csv('data/Books.csv')
