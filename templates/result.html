@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% block extraCSS %}
+{% endblock %}
+
+{% block content %}
+<div class="main-banner bg-img-full section text-center" style="background-color: white;color:black;" data-scroll-index="0">
+	<div class="pad-top-md hidden-xs"></div>
+	<div class="pad-bottom-lg"></div>
+	<div class="container">
+		<header class="main-heading row">
+			<div class="col-xs-12 col-sm-10 col-sm-push-1 col-lg-8 col-lg-push-2 text-center mar-bottom-md">
+                <img src="{{ url_for('static', filename='images/rated.png') }}" width="400" height="500">
+				<span class="subheading text-uppercase main-color">Thank you for your Rating !</span>
+				<h4>Here is our recommendations provided by our AI Model for you next journey !, Enjoy..</h4>
+			</div>
+		</header>
+
+        {% for book in recommendations %}
+        <div class="col-md-4 mt-2 mb-3">
+            <div class="card border border-danger">
+                <img class="card-img-top" width="300" height="200" src="{{ url_for('static', filename='images/book.png') }}" alt="Card image cap">
+              <div class="card-block">
+                <h4 class="Book-title card-title font-weight-bold" style="color: black;" >{{book['book_name']}}</h4>
+                <h6 class="Book-concept card-subtitle text-muted font-weight-bold">{{book['concept']}}</h6>
+                 <br><br>
+                <p class="Book-details card-text p-y-1" style="color: black;">{{book['short_description']}}</p>
+                
+                <button style="background-color:#1d4462 !important;" type="button"  class="btn btn-primary" onclick="openModel('book-{{book['book_id']}}')">More details</button>
+            </form>
+
+            </div>
+            </div>
+          </div>
+
+        {% endfor %}
+
+</div>
+</div>
+
+  
+
+{% for book in recommendations %}
+
+<div class="modal fade" id="book-{{book['book_id']}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">{{book['book_name']}}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            {{book['short_description']}}
+
+            <br>
+            <ul>
+                <li>Author: {{book['author']}}</li>
+                <li>Pages:  {{book['page']}}</li>
+                <li>Programming language:  {{book['programming_language']}}</li>
+                <li>Tool: {{book['tool']}}</li>
+            </ul>
+            
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+  
+{% endblock %}
+
+{% block scripts %}
+<script>
+function openModel(id){
+    $("#"+id).modal('show');
+    }
+</script>
+
+{% endblock %}
+
+

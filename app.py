@@ -35,11 +35,8 @@ def logout():
    # Redirect to login page
    return redirect(url_for('login'))
 
-app.add_url_rule('/rate', view_func=home.index , methods=['GET', 'POST'])
-app.add_url_rule('/show', view_func=home.index , methods=['GET', 'POST'])
-# app.add_url_rule('/test', view_func=predict.test , methods=['GET', 'POST'])
-
-app.add_url_rule('/books', view_func=predict.books , methods=['GET', 'POST'])
+app.add_url_rule('/books', view_func=predict.books , methods=['GET'])
+app.add_url_rule('/rate', view_func=predict.rate , methods=['POST'])
 
 
 # Running the app

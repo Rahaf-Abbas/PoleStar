@@ -17,7 +17,14 @@
 				<h4>If you don't like to read, you haven't found the right book</h4>
 			</div>
 		</header><!-- main heading end here -->
-        
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      {% for message in messages %}
+      <div class="alert alert-info" role="alert">{{ message }}</div>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+  
 		<div class="row" style="color:black">
 
                     <div class="py-5">
@@ -36,14 +43,17 @@
                                 
                                 <h4 class="Book-title card-title font-weight-bold" style="color: black;" >{{book['book_name']}}</h4>
                                 <h6 class="Book-concept card-subtitle text-muted font-weight-bold">{{book['concept']}}</h6>
-                                <form method="get" action="books.html">
-                                <input class="bookRate" name="bookRate" id="input-id" type="number" max="5">
+                                <form method="post" action="rate">
 
+                                <input class="bookRate" name="bookRate" id="input-id" type="number" max="5" required>
+                                {% if session['loggedin'] %}
+                                  <input type="hidden" name="book_id" value="{{book['book_id']}}">
+                                {% endif %}
                                  <br><br>
                                 <p class="Book-details card-text p-y-1" style="color: black;">{{book['short_description']}}</p>
                                 
-                                <button type="submit" class="btn btn-sm btn-info">Rate</button>
-                                <button type="button"  class="btn btn-primary" onclick="openModel('book-{{book['book_id']}}')">More details</button>
+                                <button style="background-color:#00D2C4 !important;" type="submit" class="btn btn-sm btn-info">Rate</button>
+                                <button style="background-color:#1d4462 !important;" type="button"  class="btn btn-primary" onclick="openModel('book-{{book['book_id']}}')">More details</button>
                             </form>
  
                             </div>
