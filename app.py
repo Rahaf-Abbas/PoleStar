@@ -6,7 +6,7 @@ import re
 
 
 #import pages
-import home , predict
+import home , predict , admin
 
 # Declare a Flask app
 app = Flask(__name__)
@@ -37,6 +37,7 @@ def logout():
 
 app.add_url_rule('/books', view_func=predict.books , methods=['GET'])
 app.add_url_rule('/rate', view_func=predict.rate , methods=['POST'])
+app.add_url_rule('/Alogin', view_func=admin.Alogin , methods=['GET'])
 
 
 # Running the app
