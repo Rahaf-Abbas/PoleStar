@@ -81,6 +81,10 @@ def Abooks():
         book = cursor.fetchone() 
         # check If book exist before moving on
         if book:
+            # First Deleting rates for this book by id
+            cursor.execute('DELETE FROM book_rates WHERE book_id = %s', (request.form['book_id'],))
+            mysql.connection.commit()
+            # Deleting the book by id
             cursor.execute('DELETE FROM books WHERE book_id = %s', (request.form['book_id'],))
             mysql.connection.commit()
 
@@ -107,6 +111,7 @@ def AddBook():
         return redirect('/admin/login') #redirect to login page
 
     if request.method == 'POST' and 'name' in request.form and 'img' in request.form and 'page' in request.form and 'lang' in request.form and 'concept' in request.form and 'tool' in request.form and 'author' in request.form and 'des' in request.form:  
+    
         cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
         cursor.execute('INSERT INTO books VALUES (NULL, %s, %s, %s, %s, %s, %s, %s , %s)', (request.form['name'], request.form['img'], request.form['page'],request.form['lang'],request.form['concept'],request.form['tool'],request.form['author'],request.form['des']))
         mysql.connection.commit()
@@ -121,3 +126,12 @@ def AddBook():
         return render_template('admin/AddBook.html')
 
 
+def Users():
+    if session.get('Admin_loggedin') != True: # if admin is not logged 
+        return redirect('/admin/login') #redirect to login page
+
+    cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+    cursor.execute('SELECT * FROM users')
+    users = cursor.fetchall()
+
+    return render_template('admin/Users.html', users = users)
