@@ -10,19 +10,19 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.2.1/dist/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ url_for('static', filename='admin/css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin/assets/css/style.css') }}">
 
     <!-- other -->
     <!-- <link rel="icon" href="imgs/icon.png"> -->
     <style>
         body {
-            background-image: url({{ url_for('static', filename='images/background.png') }});
+            background-image: url({{ url_for('static', filename='/admin/assets/imgs/background.png') }});
             background-repeat: no-repeat;
             background-size: cover;
         }
 
         .page {
-            background-image: url({{ url_for('static', filename='images/dots.png') }});
+            background-image: url({{ url_for('static', filename='/admin/assets/imgs/dots.png') }});
         }
 
     </style>
@@ -39,12 +39,12 @@
                         <h4 class="text-dark text-center" style="color: FEAB93;">PoleStar</h4>
                         <h6 class="text-center"><span> Admin Control Panel</span></h6>
                         <div class="mt-4">
-                            <form method="POST" action="">
+                            <form method="POST" action="login">
                                 <div class="form-row">
                                     <div class="col-12 mb-3">
                                         <label for="staffLogin">Email</label>
                                         <input type="email" id="email" name="email"
-                                            class="form-control"
+                                            class="form-control text-left"
                                             value="" placeholder="Email@name.com" required>
 
                                     </div>
@@ -52,7 +52,7 @@
                                     <div class="col-12 mb-3">
                                         <label for="staffPassword">Password</label>
                                         <input type="password" id="password" name="password"
-                                            class="form-control"
+                                            class="form-control text-left"
                                             placeholder="*****" required>
                                 
 
@@ -62,7 +62,7 @@
                                         <div class="d-flex justify-content-center text-center mt-3 mb-4" id="Stest">
                                         </div>
 
-                                        <button style="background-color:black !important;" class="btn btn-primary float-right">Login</button>
+                                        <button type="button" style="background-color:black !important;" class="btn btn-primary float-right" onclick="login()">Login</button>
                                     </div>
                                 </div>
                             </form>
@@ -86,7 +86,47 @@
 
     </script>
 
-    
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+<script src="https://cdn.rawgit.com/alertifyjs/alertify.js/v1.0.10/dist/js/alertify.js"></script>
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>	
+
+<script>
+
+function login(){
+
+var email=document.getElementById("email").value;
+var password=document.getElementById("password").value;
+if(email == null || email == "" || password == "" || password == null){
+
+	swal.fire({
+			title: 'Sorry',
+			text: "Please Fill in the required fields",
+			icon: 'info',
+		});
+	throw new Error("Empty Inputs");
+
+}
+	sendData("login", "email="+email+"&password="+password)
+	.then(function(response){
+		console.log(response[0]);
+		swal.fire({
+			title: response[0].t,
+			text: response[0].m,
+			icon: response[0].tp,
+		});
+
+		if(response[0].tp == 'error'){
+			console.log("error");
+
+		} else if (response[0].tp == 'success'){
+			window.location.replace("/admin/main");
+
+		}
+	});
+
+}
+
+</script>
 
 </body>
 

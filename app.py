@@ -21,10 +21,11 @@ app.config['MYSQL_DB'] = 'polestar'
 mysql = MySQL(app)
 
 # App Routes (pages)
+
+# Start Auth Routes
 app.add_url_rule('/', view_func=home.index , methods=['GET'])
 app.add_url_rule('/login', view_func=home.login , methods=['GET', 'POST'])
 app.add_url_rule('/register', view_func=home.register , methods=['GET', 'POST'])
-
     
 @app.route('/logout')
 def logout():
@@ -35,9 +36,24 @@ def logout():
    # Redirect to login page
    return redirect(url_for('login'))
 
+#End Auth Routes
+
+
+# Start Model Routes
 app.add_url_rule('/books', view_func=predict.books , methods=['GET'])
 app.add_url_rule('/rate', view_func=predict.rate , methods=['POST'])
-app.add_url_rule('/Alogin', view_func=admin.Alogin , methods=['GET'])
+# End Model Routes
+
+
+## Start Admin Routes (pages)
+app.add_url_rule('/admin/login', view_func=admin.Alogin , methods=['GET','POST'])
+app.add_url_rule('/admin/main', view_func=admin.main , methods=['GET'])
+app.add_url_rule('/admin/logout', view_func=admin.Alogout , methods=['GET'])
+app.add_url_rule('/admin/books', view_func=admin.Abooks , methods=['GET','POST'])
+app.add_url_rule('/admin/AddBook', view_func=admin.AddBook , methods=['GET','POST'])
+
+
+## End Admin Routes (pages)
 
 
 # Running the app

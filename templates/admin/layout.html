@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en" dir="rtl">
+
+<head>
+    <!-- meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://cdn.rtlcss.com/bootstrap/v4.2.1/css/bootstrap.min.css"
+        integrity="sha384-vus3nQHTD+5mpDiZ4rkEPlnkcyTP+49BhJ4wJeJunw06ZAp+wzzeBPUXr42fi8If" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin/assets/css/style.css') }}">
+    <!-- other -->
+    <!-- <link rel="icon" href="imgs/icon.png"> -->
+
+    <title>Pole Star - Admin</title>
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-light sticky-top flex-md-nowrap p-0 text-center">
+        <a class="navbar-brand col-md-3 col-lg-2 mx-0 h-100 d-flex align-items-center text-muted text-center" href="#">Pole Star</a>
+        <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse"
+            data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    
+        <div class="w-100 d-none d-md-flex h-100 align-items-center">
+    
+    
+            <ul class="navbar-nav px-3 ml-auto">
+    
+                {% if session['Admin_loggedin'] %}
+
+                <li class="nav-item dropdown mr-md-3" style="background: transparent">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        <span class="text-left mb-0 ml-3 text-dark mr-auto"
+                            style="color: #7F7F7F">{{session.Admin_username}}</span>
+                        <button class="btn btn-sm btn-light ml-2" style="color: #7F7F7F">
+                            <i class="far fa-user"></i>
+                        </button>
+                    </a>
+                    <div class="dropdown-menu position-absolute" style="left:0" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="logout">Log out</a>
+                    </div>
+                </li>
+                {% endif %}
+
+    
+            </ul>
+        </div>
+    
+    </nav>
+    
+    <div class="container-fluid">
+        <div class="row">
+            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+                <div class="sidebar-sticky pt-3">
+                    <ul class="nav flex-column mt-3">
+    
+                        <li class="nav-item">
+                            <a class="nav-link active" href="main">
+                                <img src="{{ url_for('static', filename='admin/assets/imgs/home.svg') }}" width="24px" height="24px" alt="home">
+                                Home
+                            </a>
+                        </li>
+    
+                        <li class="nav-item">
+                            <a class="nav-link" href="books">
+                                <img src="{{ url_for('static', filename='admin/assets/imgs/books.svg') }}" width="24px" height="24px" alt="books">
+                                Books
+                            </a>
+                        </li>
+    
+                        <li class="nav-item">
+                            <a class="nav-link" href="AddBook">
+                                <img src="{{ url_for('static', filename='admin/assets/imgs/AddBook.svg') }}" width="24px" height="24px" alt="payments">
+                                Add Book
+                            </a>
+                        </li>
+
+                        
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <img src="{{ url_for('static', filename='admin/assets/imgs/users.svg') }}" width="24px" height="24px" alt="users">
+                            Users
+                        </a>
+                    </li>
+
+
+                        <li class="nav-item d-block d-md-none">
+                            <a class="nav-link" href="#" onclick="event.preventDefault();
+                          document.getElementById('logout-form').submit();">
+                                <i class="fas fa-sign-out-alt ml-1 mr-1"></i> تسجيل الخروج
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4 py-4">
+
+                {% block content %} {% endblock %} 
+
+            
+            </main>
+            
+
+
+        </div>
+    </div>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.rtlcss.com/bootstrap/v4.2.1/js/bootstrap.min.js" integrity="sha384-a9xOd0rz8w0J8zqj1qJic7GPFfyMfoiuDjC9rqXlVOcGO/dmRqzMn34gZYDTel8k" crossorigin="anonymous"></script>
+<script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script src="{{ url_for('static', filename='admin/assets/js/scripts.js') }}"></script>
+{% block scripts %} {% endblock %} 
+
+</body>
+
+</html>
+
+    

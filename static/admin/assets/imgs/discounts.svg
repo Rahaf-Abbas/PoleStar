@@ -1,0 +1,10 @@
+<svg id="discounts" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <g id="Group_570" data-name="Group 570">
+    <path id="Path_168" data-name="Path 168" d="M8.7,17.244l3.6-3.6" fill="none" stroke="#7f7f7f" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+    <path id="Path_169" data-name="Path 169" d="M12.462,17.118a.206.206,0,1,1-.291,0,.2.2,0,0,1,.291,0" fill="none" stroke="#7f7f7f" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+    <path id="Path_170" data-name="Path 170" d="M8.828,13.48a.206.206,0,1,1-.291,0,.2.2,0,0,1,.291,0" fill="none" stroke="#7f7f7f" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+    <path id="Path_171" data-name="Path 171" d="M16,21H5a2,2,0,0,1-2-2V12a2,2,0,0,1,2-2H16a2,2,0,0,1,2,2v7A2,2,0,0,1,16,21Z" fill="none" stroke="#7f7f7f" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+    <path id="Path_172" data-name="Path 172" d="M6,10V6A2,2,0,0,1,8,4H19a2,2,0,0,1,2,2v7a2,2,0,0,1-2,2H18" fill="none" stroke="#7f7f7f" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+  </g>
+  <path id="Path_173" data-name="Path 173" d="M0,0H24V24H0Z" fill="none"/>
+</svg>

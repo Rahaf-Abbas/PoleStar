@@ -1,0 +1,110 @@
+{% extends 'admin/layout.html' %}
+{% block content %}
+<div class="w-100" dir="ltr">
+    <div class="card rounded">
+        <div class="card-body">
+            <h3 class="text-dark text-center">Add Book</h3>
+            <hr>
+
+            <div class="row">
+                <div class="col-md-12 mb-3 p-3">
+            <form id="AddForm" class="text-center">
+                <div class="form-group row">
+                  <label for="name" class="col-sm-2 col-form-label">Book Name</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control w-50 p-3" name="name" id="name" placeholder="Name" required>
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="img" class="col-sm-2 col-form-label">Book Image (Link)</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control w-50 p-3" name="img" id="img" placeholder="https://example.com">
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="author" class="col-sm-2 col-form-label">Author</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control w-50 p-3" name="author" id="author" placeholder="Rahaf">
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="page" class="col-sm-2 col-form-label">Number of Pages</label>
+                    <div class="col-sm-10">
+                      <input type="number" class="form-control w-50 p-3" name="page" id="page" placeholder="1">
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="lang" class="col-sm-2 col-form-label">Programming language</label>
+                    <div class="col-sm-10">
+                      <input type="number" class="form-control w-50 p-3" name="lang" id="lang" placeholder="python , php">
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="tool" class="col-sm-2 col-form-label">Tool</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control w-50 p-3" name="tool" id="tool" placeholder="tool involved">
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="concept" class="col-sm-2 col-form-label">Concept</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control w-50 p-3" name="concept" id="concept" placeholder="concept involved">
+                    </div>
+                  </div>
+
+
+                  <div class="form-group row">
+                    <label for="des" class="col-sm-2 col-form-label">Short Description</label>
+                    <div class="col-sm-10">
+                        <textarea class="form-control w-50 p-3" name="des" id="des" rows="3"></textarea>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <button type="submit" style="background-color:black !important;" class="btn btn-primary">Create</button>
+                </div>
+
+                  
+            </form>
+
+        </div>
+    </div>
+
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script>
+
+
+$("#AddForm").submit(function(e) {
+    e.preventDefault();
+    var form = $(this);
+
+    sendData("AddBook", form.serialize())
+	.then(function(response){
+		console.log(response[0]);
+		swal.fire({
+			title: response[0].t,
+			text: response[0].m,
+			icon: response[0].tp,
+		});
+
+		if(response[0].tp == 'error'){
+			console.log("error");
+
+		} else if (response[0].tp == 'success'){
+            form[0].reset();
+		}
+	});
+   
+
+});
+</script>
+{% endblock %}

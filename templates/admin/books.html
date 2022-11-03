@@ -1,0 +1,102 @@
+{% extends 'admin/layout.html' %}
+{% block content %}
+<div class="w-100" dir="ltr">
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      {% for message in messages %}
+      <div class="alert alert-info" role="alert">{{ message }}</div>
+      {% endfor %}
+     {% endif %}
+    {% endwith %}
+
+    <div class="card rounded">
+        <div class="card-body">
+            <h3 class="text-dark text-center">List of Books</h3>
+            <hr>
+            <div class="row">
+                <div class="col-md-12 mb-3 p-3">
+                    <div class="table-responsive text-center">
+                        <table class="table table-striped table-bordered mb-0  hover datatable">
+                            <thead style="background-color: white;">
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Title</th>
+                                    <th scope="col">Author</th>
+                                    <th scope="col">Pages</th>
+                                    <th scope="col">Concept</th>
+                                    <th scope="col">Tool</th>
+                                    <th scope="col">Action</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for book in books %}
+                                   <tr id="d-{{book['book_id']}}">
+                                        <td>{{book['book_id']}}</td>
+                                        <td>{{book['book_name']}}</td>
+                                        <td>{{book['author']}}</td>
+                                        <td>{{book['page']}}</td>
+                                        <td>{{book['concept']}}</td>
+                                        <td>{{book['tool']}}</td>
+                                        <td>
+                                        <a style="cursor: pointer" class="disactive badge badge-dark p-2 text-white"
+                                        onclick="Remove({{book['book_id']}})"><i class="fas fa-times"></i></a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+            <div class="disActive text-dark mb-5">
+
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+
+$(document).ready(function() {
+    $('.datatable').DataTable();
+} );
+
+
+function Remove(id) {
+        swal.fire({
+            title: '? Are you sure ',
+            text: "you will not be able to retrieve it.",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            cancelButtonText: 'Cancel',
+            confirmButtonText: 'Delete'
+        }).then((result) => {
+            if (result.value) {
+                sendData("books", "book_id=" + id)
+                    .then(function(response){
+                            new toast({
+                                icon: response[0].tp,
+                                title: response[0].m
+                            });
+                            if (response[0].tp == 'success') {
+                                animateCSS('#d-' + id, 'flash').then((message) => {
+                                    $('#d-' + id).remove();
+                                });
+                                console.log('Book Deleted Successfuly');
+                            }
+                    });
+            }
+        });
+    }
+</script>
+{% endblock %}
+
+

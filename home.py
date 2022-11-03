@@ -35,7 +35,7 @@ def login():
         account = cursor.fetchone()
         if account:
             session['loggedin'] = True
-            session['id'] = account['id']
+            session['id'] = account['user_id']
             session['username'] = account['username']
             session['email'] = account['email']
 

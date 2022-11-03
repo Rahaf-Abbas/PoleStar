@@ -1,0 +1,13 @@
+<svg id="payment" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <g id="Group_569" data-name="Group 569">
+    <path id="Path_159" data-name="Path 159" d="M17.5,21H6.5a2,2,0,0,1-2-2V5a2,2,0,0,1,2-2h11a2,2,0,0,1,2,2V19A2,2,0,0,1,17.5,21Z" fill="none" stroke="#7f7f7f" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+    <path id="Path_160" data-name="Path 160" d="M14,7.5h2" fill="none" stroke="#7f7f7f" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+    <path id="Path_161" data-name="Path 161" d="M14,10.5h2" fill="none" stroke="#7f7f7f" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+    <path id="Path_162" data-name="Path 162" d="M8,15h8" fill="none" stroke="#7f7f7f" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+    <path id="Path_163" data-name="Path 163" d="M8,18h8" fill="none" stroke="#7f7f7f" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+    <path id="Path_164" data-name="Path 164" d="M9.5,6.75V6" fill="none" stroke="#7f7f7f" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+    <path id="Path_165" data-name="Path 165" d="M9.5,11.25V12" fill="none" stroke="#7f7f7f" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+    <path id="Path_166" data-name="Path 166" d="M8.2,10.714a1.081,1.081,0,0,0,.927.538h.822A1.053,1.053,0,0,0,10.2,9.177L8.8,8.825A1.053,1.053,0,0,1,9.053,6.75h.822a1.08,1.08,0,0,1,.925.536" fill="none" stroke="#7f7f7f" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+  </g>
+  <path id="Path_167" data-name="Path 167" d="M0,0H24V24H0Z" fill="none"/>
+</svg>
