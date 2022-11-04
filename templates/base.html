@@ -12,9 +12,19 @@
 	<!-- set the apple mobile web app status bar style -->
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 	<!-- set the description -->
-	<meta name="description" content="PoleStar">
 	<meta name="keywords" content="PoleStar , AI , Guider , Books , Courses ">
-	<meta name="author" content="PoleStar">
+	<meta name="author" content="PoleStar, Rahaf Abbas">
+	<meta name="description" content="an Artificial Intelligence Recommendation system for self-study material that directs the learner on a route that will support his interests and promote the advantages of self-study" />
+	
+	<meta property="og:title" content="PoleStar Ai Guider System" />
+	<meta property="og:site_name" content="PoleStar" />
+	<meta property="og:description" content="an Artificial Intelligence Recommendation system for self-study material that directs the learner on a route that will support his interests and promote the advantages of self-study" />
+	<meta property="og:type" content="AI website" />
+	<meta property="og:image" content="{{ url_for('static', filename='images/favIcon.png') }}" />
+	
+	<link rel="shortcut icon" href="{{ url_for('static', filename='images/favIcon.png') }}" />
+	<link rel="icon" href="{{ url_for('static', filename='images/favIcon.png') }}" />
+
 	<!-- Page Title -->
 	<title>PoleStar</title>
 	<!-- include the site stylesheet -->
@@ -30,16 +40,6 @@
 	<!-- include the site stylesheet -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/color.css') }}">   
 	
-	<meta name="description" content="" />
-	<meta property="og:title" content="PoleStar Ai Guider System" />
-	<meta property="og:site_name" content="PoleStar" />
-	<meta property="og:description" content="an Artificial Intelligence Recommendation system for self-study material that directs the learner on a route
-	that will support his interests and promote the advantages of self-study" />
-	<meta property="og:type" content="AI website" />
-	<meta property="og:image" content="{{ url_for('static', filename='images/favIcon.png') }}" />
-	<link rel="shortcut icon" href="{{ url_for('static', filename='images/favIcon.png') }}" />
-	<link rel="icon" href="{{ url_for('static', filename='images/favIcon.png') }}" />
-
 	
 	{% block extraCSS %} {% endblock %} 
 
