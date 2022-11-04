@@ -161,3 +161,12 @@ def test():
     output = [firstBook , SecondBook , ThirdBook]
     return render_template('predict.html', output = output)
  
+
+ 
+def statistics():
+    ratings = pd.read_csv('data/Books.csv')
+    BookStats = ratings.groupby('book_name').agg({'ratings': [np.size, np.mean]})
+    df = BookStats.reset_index()  # make sure indexes pair with number of rows
+    books_rates = df.to_numpy() # convert DataFrame to Array , So we can use it easily with our template
+    books_count = len(books_rates)
+    return render_template('statistics.html',books_rates=books_rates,books_count=books_count)

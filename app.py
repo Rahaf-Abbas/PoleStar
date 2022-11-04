@@ -42,6 +42,8 @@ def logout():
 # Start Model Routes
 app.add_url_rule('/books', view_func=predict.books , methods=['GET'])
 app.add_url_rule('/rate', view_func=predict.rate , methods=['POST'])
+app.add_url_rule('/statistics', view_func=predict.statistics , methods=['GET'])
+
 # End Model Routes
 
 
