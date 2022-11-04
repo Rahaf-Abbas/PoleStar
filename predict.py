@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request , jsonify , session , url_for , redirect, flash
+
 import pandas as pd
 import numpy as np
 
@@ -18,12 +19,24 @@ app.config['MYSQL_DB'] = 'polestar'
  
 mysql = MySQL(app)
 
+
 def books():
     cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-    cursor.execute('SELECT * FROM books')
+
+    # Set the pagination configuration
+    page = request.args.get('page', 1, type=int)
+    perpage=100
+    startat=page*perpage
+
+
+    cursor.execute('SELECT * FROM books limit %s, %s;', (startat,perpage))
     books = cursor.fetchall()
 
-    return render_template('books.html', books = books)
+    cursor.execute('SELECT COUNT(*) as count FROM books')
+    countBooks = cursor.fetchone()
+    No_pages = int(round((countBooks['count'] / perpage)))
+
+    return render_template('books.html', books = books,page=page,No_pages=No_pages)
 
 
 def rate():

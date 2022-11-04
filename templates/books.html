@@ -34,6 +34,20 @@
                        <div style="display: block; margin: 0 auto; width:300px;">
                        <input class="search form-control my-3" placeholder="Search" />
                        </div>
+
+                    <!-- Pagination Links-->
+                    <nav aria-label="Page navigation example">
+                      <ul class="pagination">
+                        <li class="page-item"><a class="page-link" href="/books?page={{page - 1}}">Previous</a></li>
+                        {% for number in range(No_pages) %}
+
+                        <li class="page-item {% if page == number %} active {% endif %}"><a class="page-link" href="/books?page={{number}}">{{number}}</a></li>
+                        {% endfor %}
+
+                        <li class="page-item"><a class="page-link" href="/books?page={{page + 1}}">Next</a></li>
+                      </ul>
+                    </nav>
+
                        <ul class="list">
                         {% for book in books %}
                           <div class="col-md-4 mt-2 mb-3">
