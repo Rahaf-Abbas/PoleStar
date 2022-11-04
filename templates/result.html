@@ -14,7 +14,7 @@
 				<h4>Here is our recommendations provided by our AI Model for you next journey !, Enjoy..</h4>
 			</div>
 		</header>
-
+    <div class="row">
         {% for book in recommendations %}
         <div class="col-md-4 mt-2 mb-3">
             <div class="card border border-danger">
@@ -33,6 +33,71 @@
           </div>
 
         {% endfor %}
+      </div>
+      <div class="row">
+          <br><br><br><br>
+          <h2 class="heading" style="color: black;">Courses</h2>
+          <hr>
+          <span class="subheading text-uppercase main-color">Learn By Watching !</span>
+          <h4 style="color: #5F0121;">Here is our recommendations for courses !, Enjoy..</h4>
+          <div class="col-md-4 mt-2 mb-3 mt-5">
+          <div class="card border border-danger">
+              <img class="card-img-top" width="300" height="200" src="{{ url_for('static', filename='images/udemy.png') }}" alt="Card image cap">
+            <div class="card-block">
+              <h4 class="Book-title card-title font-weight-bold" style="color: black;" >Udemy</h4>
+              <h6 class="Book-concept card-subtitle text-muted font-weight-bold">{{bookConcept}}</h6>
+               <br><br>
+              <p class="Book-details card-text p-y-1" style="color: black;">recommended courses based on your interest</p>
+              
+              <a href="https://www.udemy.com/courses/search/?q={{bookConcept}}" target="_blank"><button style="background-color:#1d4462 !important;" type="button"  class="btn btn-primary">Click Here</button></a>
+          </form>
+
+          </div>
+          </div>
+        </div>
+
+
+        <div class="col-md-4 mt-2 mb-3 mt-5">
+          <div class="card border border-danger">
+              <img class="card-img-top" width="300" height="200" src="{{ url_for('static', filename='images/udacity.png') }}" alt="Card image cap">
+            <div class="card-block">
+              <h4 class="Book-title card-title font-weight-bold" style="color: black;" >Udacity</h4>
+              <h6 class="Book-concept card-subtitle text-muted font-weight-bold">{{bookConcept}}</h6>
+               <br><br>
+              <p class="Book-details card-text p-y-1" style="color: black;">recommended courses based on your interest</p>
+              
+              <a href=" https://www.udacity.com/courses/all?search={{bookConcept}}" target="_blank"><button style="background-color:#1d4462 !important;" type="button"  class="btn btn-primary">Click Here</button></a>
+          </form>
+
+          </div>
+          </div>
+        </div>
+
+
+
+        <div class="col-md-4 mt-2 mb-3 mt-5">
+          <div class="card border border-danger">
+              <img class="card-img-top" width="300" height="200" src="{{ url_for('static', filename='images/coursera.jpg') }}" alt="Card image cap">
+            <div class="card-block">
+              <h4 class="Book-title card-title font-weight-bold" style="color: black;" >Coursera</h4>
+              <h6 class="Book-concept card-subtitle text-muted font-weight-bold">{{bookConcept}}</h6>
+               <br><br>
+              <p class="Book-details card-text p-y-1" style="color: black;">recommended courses based on your interest</p>
+              
+              <a href="https://www.coursera.org/search?query={{bookConcept}}" target="_blank"><button style="background-color:#1d4462 !important;" type="button"  class="btn btn-primary">Click Here</button></a>
+          </form>
+
+          </div>
+          </div>
+        </div>
+
+      </div>
+
+
+
+
+
+
 
 </div>
 </div>

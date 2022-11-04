@@ -40,6 +40,7 @@ def logout():
 
 
 # Start Model Routes
+
 app.add_url_rule('/books', view_func=predict.books , methods=['GET'])
 app.add_url_rule('/rate', view_func=predict.rate , methods=['POST'])
 app.add_url_rule('/statistics', view_func=predict.statistics , methods=['GET'])
@@ -48,6 +49,7 @@ app.add_url_rule('/statistics', view_func=predict.statistics , methods=['GET'])
 
 
 ## Start Admin Routes (pages)
+
 app.add_url_rule('/admin/login', view_func=admin.Alogin , methods=['GET','POST'])
 app.add_url_rule('/admin/logout', view_func=admin.Alogout , methods=['GET'])
 
@@ -57,8 +59,6 @@ app.add_url_rule('/admin/books', view_func=admin.Abooks , methods=['GET','POST']
 app.add_url_rule('/admin/AddBook', view_func=admin.AddBook , methods=['GET','POST'])
 
 app.add_url_rule('/admin/users', view_func=admin.Users , methods=['GET'])
-
-
 
 ## End Admin Routes (pages)
 
