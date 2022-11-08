@@ -1,8 +1,7 @@
 import pandas as pd
-from flask import Flask, request , url_for, session , redirect
+from flask import Flask , url_for, session , redirect
 from flask_mysqldb import MySQL
-import MySQLdb.cursors
-import re
+
 
 
 #import pages

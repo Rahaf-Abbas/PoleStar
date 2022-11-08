@@ -23,7 +23,7 @@ mysql = MySQL(app)
 def books():
     cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
 
-    # Set the pagination configuration
+    # Set the pagination configuration ( pages of the books)
     page = request.args.get('page', 1, type=int)
     perpage=100
     startat=page*perpage
@@ -43,6 +43,7 @@ def rate():
     if session.get('loggedin') != True: # if user is not logged 
         return redirect('/login') #redirect to login page
 
+    # Check if user send data and if rate & book exists
     if request.method == 'POST' and 'bookRate' in request.form and 'book_id' in request.form: 
         if 1 <= int(request.form['bookRate']) <= 5 : # Check Rate ( Allow only from 1 to 5)
             cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
@@ -63,7 +64,7 @@ def rate():
                     flash('You have Already rated this book, Thank you !')
                     return redirect('/books')
 
-                #Insert the new rate in the database of the user
+                #Insert the new rate in the database for the user
                 cursor.execute('INSERT INTO book_rates VALUES (NULL, %s, %s, %s)', (userID, bookID, rate))
                 mysql.connection.commit()
 
